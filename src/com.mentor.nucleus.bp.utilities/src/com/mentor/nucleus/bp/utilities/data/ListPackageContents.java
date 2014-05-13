@@ -35,6 +35,8 @@ public class ListPackageContents implements IActionDelegate {
 
 	private ISelection selection;
 	
+	// Akkor is én nyertem
+	
 	public void show(String message) {
 		MessageDialog messageDialog = new MessageDialog(
 			null,
