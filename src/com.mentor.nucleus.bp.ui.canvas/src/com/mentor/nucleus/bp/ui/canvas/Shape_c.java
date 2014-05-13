@@ -1929,7 +1929,7 @@ public class Shape_c extends NonRootModelElement
 								+ Gr_c.Gettextextent(Axis_c.Y, p_Context,
 										v_leftResult);
 
-						if (((v_verticalPosnAfterPrinting < v_lastAvailableVerticalPosn) || (v_entries == 1 && Os_c
+						if (((v_verticalPosnAfterPrinting + v_single_line_height < v_lastAvailableVerticalPosn) || (v_entries == 1 && Os_c
 								.Ismultiline(v_leftResult)))) {
 
 							Gr_c.Drawtext(p_Context, Justification_c.Left,
@@ -1937,6 +1937,14 @@ public class Shape_c extends NonRootModelElement
 									(int) (v_x + v_spacing),
 									(int) (v_y + v_spacing));
 
+						} else {
+							// only draw the ellipses once
+							if(v_verticalPosnAfterPrinting <= v_lastAvailableVerticalPosn) {
+								Gr_c.Drawtext(p_Context, Justification_c.Left,
+										"...", v_leftStyle,
+										(int) (v_x + v_spacing),
+										(int) (v_y + v_spacing));
+							}
 						}
 
 						v_Y_extent = Gr_c.Gettextextent(Axis_c.Y, p_Context,
